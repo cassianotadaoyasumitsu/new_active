@@ -10,10 +10,10 @@ gem "rails", "~> 7.0.4", ">= 7.0.4.3"
 gem "sprockets-rails"
 
 # Use postgresql as the database for Active Record
-gem "pg", "~> 1.1"
+gem "pg", "~> 1.5.3"
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 5.0"
+gem "puma", "~> 6.2.2"
 
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
 gem "jsbundling-rails"
@@ -28,7 +28,7 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 # Use Redis adapter to run Action Cable in production
-gem "redis", "~> 4.0"
+gem "redis", "~> 5.0.6"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -49,8 +49,9 @@ gem "sassc-rails"
 # gem "image_processing", "~> 1.2"
 
 gem "devise"
+gem 'rails_admin', '~> 3.1', '>= 3.1.2'
 gem "autoprefixer-rails"
-gem "font-awesome-sass", "~> 6.1"
+gem "font-awesome-sass", "~> 6.4.0"
 gem "simple_form", github: "heartcombo/simple_form"
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -76,3 +77,4 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+gem "cssbundling-rails"
