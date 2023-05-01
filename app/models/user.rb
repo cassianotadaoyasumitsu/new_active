@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many   :requests, dependent: :destroy
+  has_and_belongs_to_many  :requests
 
   enum role: %w[user admin manager]
 end

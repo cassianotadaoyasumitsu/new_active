@@ -1,2 +1,7 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<%= link_to "Cadastro", new_request_path %>
+<% if user_signed_in? %>
+<% @requests.order(:created_at).each do |request| %>
+  <p><%= request.first_name %></p>
+  <%= link_to 'Edit', edit_request_path(request) %>
+<% end %>
+<% end %>

@@ -1,0 +1,4 @@
+<% @requests.order(:created_at).each do |request| %>
+    <p><%= request.first_name %></p>
+    <%= link_to 'Edit', edit_request_path(request) %>
+<% end %>
