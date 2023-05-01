@@ -95,10 +95,12 @@
     <orderEntry type="library" scope="PROVIDED" name="rails-dom-testing (v2.0.3, RVM: ruby-3.2.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rails-html-sanitizer (v1.5.0, RVM: ruby-3.2.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rails_admin (v3.1.2, RVM: ruby-3.2.1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rails_performance (v1.0.5.2, RVM: ruby-3.2.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="railties (v7.0.4.3, RVM: ruby-3.2.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rake (v13.0.6, RVM: ruby-3.2.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="redis (v5.0.6, RVM: ruby-3.2.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="redis-client (v0.14.1, RVM: ruby-3.2.1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="redis-namespace (v1.10.0, RVM: ruby-3.2.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="regexp_parser (v2.8.0, RVM: ruby-3.2.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="reline (v0.3.3, RVM: ruby-3.2.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="responders (v3.1.0, RVM: ruby-3.2.1) [gem]" level="application" />
@@ -157,6 +159,7 @@
         <option value="mongoid:devise" />
         <option value="nested_form:install" />
         <option value="rails_admin:install" />
+        <option value="rails_performance:install" />
         <option value="resource" />
         <option value="responders:install" />
         <option value="responders_controller" />
@@ -202,6 +205,7 @@
         <option value="mongoid:devise" />
         <option value="nested_form:install" />
         <option value="rails_admin:install" />
+        <option value="rails_performance:install" />
         <option value="resource" />
         <option value="responders:install" />
         <option value="responders_controller" />
