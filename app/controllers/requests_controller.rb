@@ -25,9 +25,13 @@ class RequestsController < ApplicationController
 
   def update
     @request = Request.find(params[:id])
-    @request.users << current_user
 
-    if @request.save
+    # Only add the user to the association if they are not already included
+    unless @request.users.include?(current_user)
+      @request.users << current_user
+    end
+
+    if @request.update(request_params)
       redirect_to root_path, notice: "Request updated."
     else
       render :edit

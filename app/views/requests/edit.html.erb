@@ -4,7 +4,7 @@
   <%= f.input :address %>
   <%= f.input :phone %>
   <%= f.input :email %>
-  <%= f.input :status %>
+  <%= f.input :status, collection: Request::REQUEST_STATUS %>
   <% @users.each do |user| %>
     <div>
       <%= check_box_tag "user_ids[]", user.id, @request.users.include?(user) %>
