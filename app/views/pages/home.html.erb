@@ -1,7 +1,6 @@
-<%= link_to "Cadastro", new_request_path %>
-<% if user_signed_in? %>
-<% @requests.order(:created_at).each do |request| %>
-  <p><%= request.first_name %></p>
-  <%= link_to 'Edit', edit_request_path(request) %>
-<% end %>
+<h1>Página Inicial</h1>
+<h2>Home Page</h2>
+
+<% unless user_signed_in? %>
+<%=  link_to "Cadastro", new_user_registration_path  %>
 <% end %>

@@ -1,9 +1,69 @@
-<h2>Sign up</h2>
+<h2 class="text-center">Cadastro</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.input :first_name,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "name" }%>
+    <%= f.input :last_name,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "surname" }%>
+    <%= f.input :furigana,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "fugigana" }%>
+    <%= f.input :nihongo,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "nihongo" }%>
+    <%= f.input :birthday,
+                as: :date,
+                start_year: Date.today.year - 60,
+                end_year: Date.today.year,
+                default: Date.new(2000, 1, 1),
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "birthday" }%>
+    <%= f.input :gender,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "gender" }%>
+    <%= f.input :phone,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "phone" }%>
+    <%= f.input :postal_code,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "postal code" }%>
+    <%= f.input :address,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "address" }%>
+    <%= f.input :address2,
+                required: false,
+                autofocus: true,
+                input_html: { autocomplete: "address2" }%>
+    <%= f.input :skill,
+                required: false,
+                autofocus: true,
+                input_html: { autocomplete: "skill" }%>
+    <%= f.input :licenses,
+                required: false,
+                autofocus: true,
+                input_html: { autocomplete: "licenses" }%>
+    <%= f.input :situation,
+                required: false,
+                autofocus: true,
+                input_html: { autocomplete: "situation" }%>
+    <%= f.input :message,
+                required: false,
+                autofocus: true,
+                input_html: { autocomplete: "message" }%>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
@@ -18,8 +78,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+    <%= f.button :submit, "Cadastrar", class: "btn btn-success" %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>

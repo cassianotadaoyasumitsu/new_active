@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'users/registrations' }
   root to: "pages#home"
 
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :requests
+  resources :users, only: [:index, :show]
 
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  # Performance routes
+  authenticate :user, -> (user) { user.admin? } do
+    mount RailsPerformance::Engine, at: 'rails/performance'
+  end
 end

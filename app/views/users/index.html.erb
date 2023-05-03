@@ -1,0 +1,11 @@
+<% @users.each do |user| %>
+  <%= link_to user_path(user), class: "card-link" do %>
+    <div class="card-product mb-2">
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+      <div class="card-product-infos">
+        <h2><%= user.first_name %></h2>
+        <p><strong><%= user.phone %></strong></p>
+      </div>
+    </div>
+  <% end %>
+<% end %>
