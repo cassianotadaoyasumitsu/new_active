@@ -34,23 +34,26 @@ class UsersController < ApplicationController
   end
 
   def update
-    if current_user.admin? || current_user.role == "manager"
-      @user = User.find_by(id: params[:id])
-
-      if @user.update(user_params)
-        if @user.status == "active"
-        redirect_to user_path(@user), notice: "User was successfully updated."
-        elsif @user.status == "inactive"
-          redirect_to inactive_users_path, notice: "User was successfully updated."
+    @user = User.find_by(id: params[:id])
+      if current_user.admin? || current_user.role == "manager"
+        if @user.update(user_params)
+          if @user.status == "active"
+          redirect_to user_path(@user), notice: "User was successfully updated."
+          elsif @user.status == "inactive"
+            redirect_to inactive_users_path, notice: "User was successfully updated."
+          else
+            redirect_to users_path, notice: "User was successfully updated."
+          end
         else
-          redirect_to users_path, notice: "User was successfully updated."
+          render :edit
         end
       else
-        render :edit
+        if @user.update(user_params)
+          redirect_to user_path(@user), notice: "User was successfully updated."
+        else
+          render :edit
+        end
       end
-    else
-      redirect_to root_path, notice: "You are not authorized to view this page"
-    end
   end
 
   # Follow methods:
