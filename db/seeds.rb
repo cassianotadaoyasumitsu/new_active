@@ -9,6 +9,7 @@ puts "Cleaning database..."
 sleep 1
 
 User.destroy_all
+Follow.destroy_all
 puts "Creating users..."
 sleep 2
 # 1. Create a user
