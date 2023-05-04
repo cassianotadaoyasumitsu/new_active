@@ -1,0 +1,61 @@
+<div class="text-center">
+  <h2>Editar</h2>
+  <p>Campos com * são obrigatórios.</p>
+</div>
+
+<div class="text-center">
+  <% if current_user.is_following?(@user.id) %>
+    <%= link_to "Unfollow", unfollow_user_path(@user.id), method: :post, remote: true, class: "btn btn-info" %>
+  <% else %>
+    <%= link_to "Follow", follow_user_path(@user.id), method: :post, remote: true, class: "btn btn-success" %>
+  <% end %>
+</div>
+
+<%= simple_form_for @user do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :first_name, required: true %>
+    <%= f.input :last_name, required: true %>
+    <%= f.input :furigana, required: true %>
+    <%= f.input :birthday, as: :date, start_year: Date.today.year - 60, end_year: Date.today.year, default: Date.new(2000, 1, 1), required: true %>
+    <%= f.input :gender, collection: %w[Male Female Other], required: true %>
+    <%= f.input :nihongo, collection: %w[N5-0~20% N4-20~40% N3-40~60% N2-60~80% N1-80~100%], required: true %>
+    <%= f.input :postal_code, required: true %>
+    <%= f.input :address, required: true %>
+    <%= f.input :address2 %>
+    <%= f.input :phone, required: true %>
+    <%= f.input :status, collection: %w[active inactive] %>
+    <%= f.input :role, collection: %w[regular manager] %>
+    <%= f.input :skill %>
+    <%= f.input :licenses %>
+    <%= f.input :situation %>
+    <%= f.input :message %>
+  </div>
+
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Atualizar
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Confirmar atualização.</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Você tem certeza que deseja atualizar o usuário?</p>
+          <p>Você precisa estar seguindo o cadastro para trocar o 'status'.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+          <%= f.button :submit, "Atualizar", class: "btn btn-success" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+

@@ -1,4 +1,7 @@
-<h2 class="text-center">Cadastro</h2>
+<div class="text-center">
+  <h2>Cadastro</h2>
+  <p>Campos com * são obrigatórios.</p>
+</div>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
   <%= f.error_notification %>
@@ -19,6 +22,7 @@
     <%= f.input :nihongo,
                 required: true,
                 autofocus: true,
+                collection: %w[N5-0~20% N4-20~40% N3-40~60% N2-60~80% N1-80~100%],
                 input_html: { autocomplete: "nihongo" }%>
     <%= f.input :birthday,
                 as: :date,
@@ -29,6 +33,7 @@
                 autofocus: true,
                 input_html: { autocomplete: "birthday" }%>
     <%= f.input :gender,
+                collection: %w[Male Female Other],
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "gender" }%>

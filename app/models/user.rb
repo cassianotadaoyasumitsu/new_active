@@ -4,4 +4,29 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :follower_relationships, foreign_key: :following_id, class_name: 'Follow'
+  has_many :followers, through: :follower_relationships, source: :follower
+
+  has_many :following_relationships, foreign_key: :follower_id, class_name: 'Follow'
+  has_many :following, through: :following_relationships, source: :following
+
+
+  validate :active_user_must_have_followers, if: Proc.new { |user| user.status == 'active' }
+
+  # Follow methods:
+  def active_user_must_have_followers
+    errors.add(:base, "An active user must have at least one follower") if followers.empty?
+  end
+  def follow(user_id)
+    following_relationships.create(following_id: user_id)
+  end
+
+  def unfollow(user_id)
+    following_relationships.find_by(following_id: user_id).destroy
+  end
+
+  def is_following?(user_id)
+    relationship = Follow.find_by(follower_id: id, following_id: user_id)
+    true if relationship
+  end
 end
