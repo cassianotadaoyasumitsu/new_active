@@ -1,5 +1,7 @@
 <% unless user_signed_in? %>
-<%=  link_to "Cadastro", new_user_registration_path  %>
+  <div class="text-center">
+    <%=  link_to "Cadastro", new_user_registration_path, class: "btn btn-primary" %>
+  </div>
   <% else %>
   <% if current_user.admin || current_user.role == "manager" %>
     <ul class="nav nav-tabs">
