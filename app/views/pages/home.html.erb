@@ -15,6 +15,11 @@
         <%= link_to "Inativos", inactive_users_path, class: "nav-link" %>
       </li>
     </ul>
+    <div class="text-end">
+      <% if user_signed_in? %>
+        <%= current_user.email %>
+      <% end %>
+    </div>
     <h1>Página Inicial</h1>
     <h2>Home Page</h2>
 
