@@ -11,12 +11,16 @@
     </li>
   </ul>
 <% end %>
+
 <br>
+
 <div class="d-flex justify-content-between">
   <h2>Informações do cadastro.</h2>
   <p><%= link_to "Editar", edit_user_path(@user), class: "btn btn-secondary" %></p>
 </div>
+
 <hr>
+
 <p><strong>Nome: </strong><%= @user.first_name %> <%= @user.last_name %></p>
 <p><strong>Telefone: </strong><%= @user.phone %></p>
 <p><strong>Email: </strong><%= @user.email %></p>

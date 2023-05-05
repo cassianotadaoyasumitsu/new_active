@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :following_relationships, foreign_key: :follower_id, class_name: 'Follow'
   has_many :following, through: :following_relationships, source: :following
 
-
+  validates :first_name, :last_name, :furigana, :gender, :phone, :postal_code, :address, presence: true
   validate :active_user_must_have_followers, if: Proc.new { |user| user.status == 'active' }
 
   # Follow methods:
