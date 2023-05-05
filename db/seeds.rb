@@ -23,7 +23,7 @@ User.create!( first_name: "Active", last_name: "Ltda", role: "manager", email: "
 User.create!( first_name: "Maria", email: "maria@email.com", password: "123456", password_confirmation: "123456")
 User.create!( first_name: "Dario", email: "dario@email.com", password: "123456", password_confirmation: "123456")
 10.times do
-  User.create!( first_name: Faker::Name.first_name, email: Faker::Internet.email, password: "123456", password_confirmation: "123456" )
+  User.create!( first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, phone: Faker::PhoneNumber.cell_phone, email: Faker::Internet.email, password: "123456", password_confirmation: "123456" )
 end
 
 puts "Users created!"

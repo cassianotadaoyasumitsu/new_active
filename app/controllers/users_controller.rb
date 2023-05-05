@@ -2,10 +2,10 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:follow, :unfollow]
   def index
     if current_user.admin?
-      @users = User.all
+      @users = User.all.order(created_at: :desc)
     elsif current_user.role == "manager"
       subquery = Follow.where(follower_id: current_user.id).select(:following_id)
-      @users = User.where(role: nil).or(User.where(role: '')).where(status: nil).or(User.where(status: ''))
+      @users = User.where(role: nil).or(User.where(role: '')).where(status: nil).or(User.where(status: '')).order(created_at: :desc)
       .where.not(id: subquery)
     else
       redirect_to root_path, notice: "You are not authorized to view this page"
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   end
 
   def active_index
-    @users = User.joins(:follower_relationships).where(follower_relationships: { follower_id: current_user.id })
+    @users = User.joins(:follower_relationships).where(follower_relationships: { follower_id: current_user.id }).order(created_at: :desc)
   end
 
   def inactive_index
