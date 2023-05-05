@@ -11,13 +11,25 @@
     </li>
   </ul>
 <% end %>
-<h1>Aqui vai existir um perfil.</h1>
-<h2>com as informações do cadastro.</h2>
-<h3><%= @user.first_name %></h3>
-<p><%= @user.status %></p>
-<%= link_to "Editar", edit_user_path(@user), class: "btn btn-secondary" %>
-<%# if current_user.is_following?(@user.id) %>
-  <%#= link_to "Unfollow", unfollow_user_path(@user.id), method: :post, remote: true, class: "btn btn-info" %>
-<%# else %>
-  <%#= link_to "Follow", follow_user_path(@user.id), method: :post, remote: true, class: "btn btn-success" %>
-<%# end %>
+<br>
+<div class="d-flex justify-content-between">
+  <h2>Informações do cadastro.</h2>
+  <p><%= link_to "Editar", edit_user_path(@user), class: "btn btn-secondary" %></p>
+</div>
+<hr>
+<p><strong>Nome: </strong><%= @user.first_name %> <%= @user.last_name %></p>
+<p><strong>Telefone: </strong><%= @user.phone %></p>
+<p><strong>Email: </strong><%= @user.email %></p>
+<p><strong>Furigana: </strong><%= @user.furigana %></p>
+<p><strong>Nascimento: </strong><%= @user.birthday %></p>
+<p><strong>Sexo: </strong><%= @user.gender %></p>
+<p><strong>Nihongo: </strong><%= @user.nihongo %></p>
+<p><strong>Postal Code: </strong><%= @user.postal_code %></p>
+<p><strong>Endereço: </strong><%= @user.address %></p>
+<p><%= @user.address2 %></p>
+<p><strong>Status: </strong><%= @user.status %></p>
+<p><strong>Role: </strong><%= @user.role %></p>
+<p><strong>Skills: </strong><%= @user.skill %></p>
+<p><strong>Carteiras: </strong><%= @user.licenses %></p>
+<p><strong>Situação Atual: </strong><%= @user.situation %></p>
+<p><strong>Mensagem: </strong><%= @user.message %></p>
