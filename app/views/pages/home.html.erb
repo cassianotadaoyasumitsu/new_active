@@ -1,6 +1,8 @@
 <% unless user_signed_in? %>
-  <div class="text-center">
-    <%=  link_to "Cadastro", new_user_registration_path, class: "btn btn-primary" %>
+  <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="text-center">
+      <%=  link_to "Cadastro", new_user_registration_path, class: "btn btn-primary" %>
+    </div>
   </div>
   <% else %>
   <% if current_user.admin || current_user.role == "manager" %>
@@ -20,14 +22,5 @@
         <%= current_user.email %>
       <% end %>
     </div>
-    <h1>Página Inicial</h1>
-    <h2>Home Page</h2>
-
-    <p>Solicitações**</p>
-    <p>Informações</p>
-    <p>Fabrica</p>
-    <p>Data Inicio</p>
-    <p>Tantosha e contato</p>
-    <p>Telefones úteis</p>
   <% end %>
 <% end %>
