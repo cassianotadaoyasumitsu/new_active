@@ -22,5 +22,15 @@
         <%= current_user.email %>
       <% end %>
     </div>
+    <% elsif  current_user.persisted? && current_user.sign_in_count == 1 %>
+      <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div class="text-center">
+          <h1>Seja bem vindo/a <%= current_user.first_name %>!</h1>
+          <h3>Obrigado por cadastrar, entraremos em contato em breve!</h3>
+          <p>Seu email para Login é <strong><%= current_user.email %></strong></p>
+          <p>Lembre-se de guardar seu email e senha!</p>
+          <%= link_to "Fechar", destroy_user_session_path, data: {turbo_method: :delete}, class: "btn btn-primary" %>
+        </div>
+      </div>
   <% end %>
 <% end %>

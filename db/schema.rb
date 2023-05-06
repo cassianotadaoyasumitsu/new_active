@@ -20,7 +20,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_03_111936) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["follower_id"], name: "index_follows_on_follower_id"
-    t.index %w[following_id follower_id], name: "index_follows_on_following_id_and_follower_id", unique: true
+    t.index ["following_id", "follower_id"], name: "index_follows_on_following_id_and_follower_id", unique: true
     t.index ["following_id"], name: "index_follows_on_following_id"
   end
 
@@ -46,6 +46,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_03_111936) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false, null: false
