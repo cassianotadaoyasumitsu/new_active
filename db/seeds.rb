@@ -20,8 +20,8 @@ User.create!( email: "admin@usuarioincomum.com", password: "admin123", password_
 User.create!( first_name: "Active", last_name: "Ltda", role: "manager", email: "active@active.com", password: "active123", password_confirmation: "active123" )
 
 # 3. Create faker users
-User.create!( first_name: "Maria", email: "maria@email.com", password: "123456", password_confirmation: "123456")
-User.create!( first_name: "Dario", email: "dario@email.com", password: "123456", password_confirmation: "123456")
+User.create!( first_name: "Maria", last_name: Faker::Name.last_name, email: "maria@email.com", password: "123456", password_confirmation: "123456")
+User.create!( first_name: "Dario", last_name: Faker::Name.last_name, email: "dario@email.com", password: "123456", password_confirmation: "123456")
 10.times do
   User.create!( first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, phone: Faker::PhoneNumber.cell_phone, email: Faker::Internet.email, password: "123456", password_confirmation: "123456" )
 end
