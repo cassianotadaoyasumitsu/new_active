@@ -10,8 +10,16 @@ class User < ApplicationRecord
   has_many :following_relationships, foreign_key: :follower_id, class_name: 'Follow'
   has_many :following, through: :following_relationships, source: :following
 
-  # validates :first_name, :last_name, :furigana, :gender, :phone, :postal_code, :address, presence: true
+  validates :first_name, :last_name, :furigana, :gender, :phone, :postal_code, :address, presence: true
+  # validates :role, :status, presence: true, if: :persisted?
+  validate :role_required_for_active_user, if: :persisted?
   validate :active_user_must_have_followers, if: Proc.new { |user| user.status == 'active' }
+
+  def role_required_for_active_user
+    if status != 'inactive' && role.blank?
+      errors.add(:role, "can't be blank for active users")
+    end
+  end
 
   # Follow methods:
   def active_user_must_have_followers

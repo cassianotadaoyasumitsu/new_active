@@ -9,12 +9,18 @@
     <%= link_to "Inativos", inactive_users_path, class: "nav-link" %>
   </li>
 </ul>
+<div class="text-end">
+  <% if user_signed_in? %>
+    <%= current_user.email %>
+  <% end %>
+</div>
 <br>
 <% @users.each do |user| %>
   <%= link_to user_path(user), class: "card-link" do %>
     <div class="card">
       <div class="card-header">
-        <p><strong>Vaga: SANYO, Local: UEDA</strong></p>
+        <p><strong>Vaga: SANYO, Local: UEDA</strong>
+        </p>
       </div>
       <div class="card-body">
         <p><strong>Nome: </strong><%= user.first_name %> <%= user.last_name %>,  <strong>Telefone: </strong><%= user.phone %></p>
