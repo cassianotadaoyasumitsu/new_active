@@ -20,6 +20,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
       t.text :licenses
       t.text :situation
       t.text :message
+      t.string :job
 
       ## Database authenticatable
       t.string :email,              null: false, default: ""

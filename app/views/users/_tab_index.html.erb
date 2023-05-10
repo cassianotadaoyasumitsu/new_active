@@ -40,7 +40,7 @@
   <tbody>
   <% @users.each do |user| %>
     <tr>
-      <td>Sanyo/Ueda</td>
+      <td><%= user.job %></td>
       <td><%= link_to user.first_name, user_path(user) %></td>
       <td><%= user.phone %></td>
     </tr>
