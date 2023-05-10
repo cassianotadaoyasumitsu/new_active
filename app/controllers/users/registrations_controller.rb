@@ -57,7 +57,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
                                                        :licenses,
                                                        :situation,
                                                        :message,
-                                                       :role]
+                                                       :role,
+                                                       :job]
     )
   end
 

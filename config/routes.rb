@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :jobs, only: [:index, :new, :create, :destroy]
   # Users routes
   get '/active', to: 'users#active_index', as: 'active_users'
   get '/inactive', to: 'users#inactive_index', as: 'inactive_users'
