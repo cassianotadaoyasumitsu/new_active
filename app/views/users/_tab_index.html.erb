@@ -19,7 +19,11 @@
   <%#= link_to user_path(user), class: "card-link" do %>
 <!--    <div class="card">-->
 <!--      <div class="card-header">-->
-<!--        <p><strong>Vaga: SANYO, Local: UEDA</strong> | <strong>Nome: </strong><%#= user.first_name %> <%#= user.last_name %>,  <strong>Telefone: </strong><%#= user.phone %></p>-->
+<!--        <p><strong>Vaga: SANYO, Local: UEDA</strong></p>-->
+<!--      </div>-->
+<!--      <div class="card-body">-->
+<!--        <p><strong>Nome: </strong><%#= user.first_name %> <%#= user.last_name %></p>-->
+<!--        <p><strong>Telefone: </strong><%#= user.phone %></p>-->
 <!--      </div>-->
 <!--    </div>-->
   <%# end %>
@@ -31,16 +35,14 @@
     <th>Vaga</th>
     <th>Nome</th>
     <th>Telefone</th>
-    <th></th>
   </tr>
   </thead>
   <tbody>
   <% @users.each do |user| %>
     <tr>
-      <td>SANYO, Local: UEDA</td>
-      <td><%= user.first_name %> <%= user.last_name %></td>
+      <td>Sanyo/Ueda</td>
+      <td><%= link_to user.first_name, user_path(user) %></td>
       <td><%= user.phone %></td>
-      <td><%= link_to "Ver perfil", user_path(user), class: "btn btn-success rounded-pill btn-sm" %></td>
     </tr>
   <% end %>
   </tbody>
