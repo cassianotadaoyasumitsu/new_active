@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, :furigana, :gender, :phone, :postal_code, :address, presence: true
   # validates :role, :status, presence: true, if: :persisted?
-  validate :role_required_for_active_user, if: :persisted?
+  # validate :role_required_for_active_user, if: :persisted?
   validate :active_user_must_have_followers, if: Proc.new { |user| user.status == 'active' }
 
   def role_required_for_active_user
