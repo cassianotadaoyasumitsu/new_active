@@ -8,6 +8,7 @@
 puts "Cleaning database..."
 sleep 1
 
+Job.destroy_all
 User.destroy_all
 Follow.destroy_all
 puts "Creating users..."
