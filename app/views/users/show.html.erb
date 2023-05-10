@@ -26,7 +26,7 @@
 <p><strong>Email: </strong><%= @user.email %></p>
 <p><strong>Telefone: </strong><%= @user.phone %></p>
 <p><strong>Furigana: </strong><%= @user.furigana %></p>
-<p><strong>Nascimento: </strong><%= @user.birthday.strftime('%Y-%m-%d') %></p>
+<p><strong>Nascimento: </strong><%= @user.birtday ? @user.birthday.strftime('%Y-%m-%d') : "" %></p>
 <p><strong>Sexo: </strong><%= @user.gender %></p>
 <p><strong>Nihongo: </strong><%= @user.nihongo %></p>
 <p><strong>Postal Code: </strong><%= @user.postal_code %></p>
