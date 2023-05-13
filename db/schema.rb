@@ -53,6 +53,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_10_120750) do
     t.text "situation"
     t.text "message"
     t.string "job"
+    t.string "factory"
+    t.string "manager"
+    t.string "contractor"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

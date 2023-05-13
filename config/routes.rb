@@ -3,17 +3,13 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'users/registrations' }
   root to: "pages#home"
 
-  resources :users, only: [:index, :show, :edit, :update] do
-    member do
-      get :follow
-      get :unfollow
-    end
-  end
+  resources :users, only: [:index, :new, :show, :edit, :update]
 
   resources :jobs, only: [:index, :new, :create, :destroy]
   # Users routes
-  get '/active', to: 'users#active_index', as: 'active_users'
+  get '/manager', to: 'users#manager_index', as: 'manager_users'
   get '/inactive', to: 'users#inactive_index', as: 'inactive_users'
+  get '/master', to: 'users#master_index', as: 'master_users'
 
   # Performance routes
   authenticate :user, -> (user) { user.admin? } do

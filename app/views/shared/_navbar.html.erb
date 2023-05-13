@@ -1,7 +1,10 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-active">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "icon.png" %>
+        <% if user_signed_in? %>
+          <%= current_user.email %>
+        <% end %>
     <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,7 +38,7 @@
             <%= image_tag "user.png", class: "avatar", alt: "dropdown menu" %>
           </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <% if current_user.admin? || current_user.role == "manager" %>
+              <% if current_user.admin? || current_user.role == "manager" || current_user.role == "master" %>
                 <%= link_to "Cadastros", users_path, class: "dropdown-item" %>
               <% end %>
               <%= link_to "Perfil", user_path(current_user), class: "dropdown-item" %>

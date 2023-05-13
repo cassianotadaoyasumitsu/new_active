@@ -1,11 +1,9 @@
-<%= render "users/tab_index" %>
-
 <ul class="nav nav-tabs">
   <li class="nav-item">
     <%= link_to "Todos", users_path, class: "nav-link" %>
   </li>
   <li class="nav-item">
-    <%= link_to "Ativos", active_users_path, class: "nav-link" %>
+    <%= link_to "Ativos", manager_users_path, class: "nav-link" %>
   </li>
   <li class="nav-item">
     <%= link_to "Inativos", inactive_users_path, class: "nav-link" %>
