@@ -10,7 +10,7 @@
     <% if current_user.role == "manager" || current_user.role == "master" || current_user.admin %>
       <%= f.input :contractor, placeholder: "Only fill if User is manager", required: true %>
       <%= f.input :manager, collection: User.where(role: %w[master manager]).pluck(:first_name), required: true %>
-      <%= f.input :factory, required: true %>
+      <%= f.input :factory, collection: Factory.all, required: true %>
       <%= f.input :status, collection: %w[active inactive] %>
       <%= f.input :role, collection: %w[regular manager] %>
     <% end %>

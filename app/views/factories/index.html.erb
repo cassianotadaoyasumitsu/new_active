@@ -1,0 +1,24 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <%= link_to "New Factory", new_factory_path, class: "nav-link" %>
+  </li>
+</ul>
+
+<table class="table table-striped mt-2">
+  <thead>
+  <tr>
+    <th>Factory</th>
+    <th>Phone</th>
+    <th>Contact</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @factories.each do |factory| %>
+    <tr>
+      <td><%= link_to factory.name, factory_path(factory) %></td>
+      <td><%= factory.phone %></td>
+      <td><%= factory.contact_person %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

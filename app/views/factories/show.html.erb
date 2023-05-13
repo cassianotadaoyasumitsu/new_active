@@ -1,0 +1,12 @@
+<hr>
+<div class="d-flex justify-content-between">
+  <h2>Factory</h2>
+  <p><%= link_to "Editar", edit_factory_path(@factory), class: "btn btn-secondary" %></p>
+</div>
+
+
+<div class="col-md-6">
+  <p><strong>Nome:</strong> <%= @factory.name %></p>
+  <p><strong>Endereço:</strong> <%= @factory.address %></p>
+  <p><strong>Telefone:</strong> <%= @factory.phone %></p>
+</div>
