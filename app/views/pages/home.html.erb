@@ -5,23 +5,35 @@
     </div>
   </div>
   <% else %>
-  <% if current_user.admin || current_user.role == "manager" %>
+  <% if current_user.admin || current_user.role == "manager" || current_user.role == "master" %>
     <ul class="nav nav-tabs">
       <li class="nav-item">
         <%= link_to "Todos", users_path, class: "nav-link" %>
       </li>
-      <li class="nav-item">
-        <%= link_to "Ativos", active_users_path, class: "nav-link" %>
-      </li>
+      <% if current_user.role == "manager" %>
+        <li class="nav-item">
+          <%= link_to "Ativos", manager_users_path, class: "nav-link" %>
+        </li>
+      <% elsif current_user.role == "master" %>
+        <li class="nav-item">
+          <%= link_to "Ativos", master_users_path, class: "nav-link" %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to "Ativos", users_path, class: "nav-link" %>
+        </li>
+      <% end %>
       <li class="nav-item">
         <%= link_to "Inativos", inactive_users_path, class: "nav-link" %>
       </li>
     </ul>
-    <div class="text-end">
-      <% if user_signed_in? %>
-        <%= current_user.email %>
-      <% end %>
+
+    <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+      <div class="text-center">
+        <%=  link_to "Novo Cadastro", new_user_path, class: "btn btn-primary" %>
+      </div>
     </div>
+
     <% elsif  current_user.persisted? && current_user.sign_in_count == 1 %>
       <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
         <div class="text-center">

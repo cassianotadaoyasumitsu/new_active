@@ -1,6 +1,44 @@
-<%= simple_form_for @user do |f| %>
-  f.input :first_name
-  f.input :last_name
+<div class="text-center">
+  <h2>Criar Novo</h2>
+  <p>Campos com * são obrigatórios.</p>
+</div>
 
-  f.button :submit
+<%= simple_form_for @user do |f| %>
+  <div class="form-inputs">
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :job, required: true %>
+    <%= f.input :contractor, placeholder: "Only fill if User is manager", required: true %>
+    <%= f.input :manager, collection: User.where(role: %w[master manager]).pluck(:first_name), required: true %>
+    <%= f.input :factory, required: true %>
+    <%= f.input :status, collection: %w[active inactive] %>
+    <%= f.input :role, collection: %w[regular manager] %>
+    <%= f.input :first_name, required: true %>
+    <%= f.input :last_name, required: true %>
+    <%= f.input :furigana, required: true %>
+    <%= f.input :birthday, as: :date, start_year: Date.today.year - 60, end_year: Date.today.year, default: Date.new(2000, 1, 1), required: true %>
+    <%= f.input :gender, collection: %w[Male Female Other], required: true %>
+    <%= f.input :nihongo, collection: %w[N5-0~20% N4-20~40% N3-40~60% N2-60~80% N1-80~100%], required: true %>
+    <%= f.input :postal_code, required: true %>
+    <%= f.input :address, required: true %>
+    <%= f.input :address2 %>
+    <%= f.input :phone, required: true %>
+    <%= f.input :skill %>
+    <%= f.input :licenses %>
+    <%= f.input :situation %>
+    <%= f.input :message %>
+    <%= f.input :email,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "email" }%>
+    <%= f.input :password,
+                required: true,
+                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                input_html: { autocomplete: "new-password" } %>
+    <%= f.input :password_confirmation,
+                required: true,
+                input_html: { autocomplete: "new-password" } %>
+
+    <%= f.button :submit %>
+  </div>
 <% end %>

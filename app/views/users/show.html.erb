@@ -1,11 +1,21 @@
-<% if current_user.admin || current_user.role == "manager" %>
+<% if current_user.admin || current_user.role == "manager" || current_user.role == "master" %>
   <ul class="nav nav-tabs">
     <li class="nav-item">
       <%= link_to "Todos", users_path, class: "nav-link" %>
     </li>
-    <li class="nav-item">
-      <%= link_to "Ativos", active_users_path, class: "nav-link" %>
-    </li>
+    <% if current_user.role == "manager" %>
+      <li class="nav-item">
+        <%= link_to "Ativos", manager_users_path, class: "nav-link" %>
+      </li>
+    <% elsif current_user.role == "master" %>
+      <li class="nav-item">
+        <%= link_to "Ativos", master_users_path, class: "nav-link" %>
+      </li>
+    <% else %>
+      <li class="nav-item">
+        <%= link_to "Ativos", users_path, class: "nav-link" %>
+      </li>
+    <% end %>
     <li class="nav-item">
       <%= link_to "Inativos", inactive_users_path, class: "nav-link" %>
     </li>
@@ -39,10 +49,6 @@
 <p><strong>Carteiras: </strong><%= @user.licenses %></p>
 <p><strong>Situação Atual: </strong><%= @user.situation %></p>
 <p><strong>Mensagem: </strong><%= @user.message %></p>
-
-<% @user.followers.each do |f| %>
-  <p><%= f.first_name %> - <%= f.phone %></p>
-<% end %>
 
 <div class="text-center">
   <button onclick="window.print()" class="btn btn-primary">Imprimir</button>
