@@ -35,7 +35,7 @@
             <%= image_tag "user.png", class: "avatar", alt: "dropdown menu" %>
           </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <% if current_user.admin? || current_user.role == "manager" %>
+              <% if current_user.admin? || current_user.role == "manager" || current_user.role == "master" %>
                 <%= link_to "Cadastros", users_path, class: "dropdown-item" %>
               <% end %>
               <%= link_to "Perfil", user_path(current_user), class: "dropdown-item" %>

@@ -3,21 +3,24 @@
   <p>Campos com * são obrigatórios.</p>
 </div>
 
-<% if current_user.admin || current_user.role == "manager" %>
-<div class="text-center">
-  <% if current_user.is_following?(@user.id) %>
-    <%= link_to "Unfollow", unfollow_user_path(@user.id), method: :post, remote: true, class: "btn btn-info" %>
-  <% else %>
-    <%= link_to "Follow", follow_user_path(@user.id), method: :post, remote: true, class: "btn btn-success" %>
-  <% end %>
-</div>
-<% end %>
+<%# if current_user.admin || current_user.role == "manager" %>
+<!--<div class="text-center">-->
+  <%# if current_user.is_following?(@user.id) %>
+    <%#= link_to "Unfollow", unfollow_user_path(@user.id), method: :post, remote: true, class: "btn btn-info" %>
+  <%# else %>
+    <%#= link_to "Follow", follow_user_path(@user.id), method: :post, remote: true, class: "btn btn-success" %>
+  <%# end %>
+<!--</div>-->
+<%# end %>
 
 <%= simple_form_for @user do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
     <%= f.input :job, required: true %>
+    <%= f.input :contractor, placeholder: "Only fill if User is manager", required: true %>
+    <%= f.input :manager, collection: User.where(role: %w[master manager]).pluck(:first_name), required: true %>
+    <%= f.input :factory, required: true %>
     <%= f.input :first_name, required: true %>
     <%= f.input :last_name, required: true %>
     <%= f.input :furigana, required: true %>
@@ -28,9 +31,9 @@
     <%= f.input :address, required: true %>
     <%= f.input :address2 %>
     <%= f.input :phone, required: true %>
-    <% if current_user.role == "manager" || current_user.admin %>
+    <% if current_user.role == "master" ||current_user.role == "manager" || current_user.admin %>
     <%= f.input :status, collection: %w[active inactive] %>
-    <%= f.input :role, collection: %w[regular manager] %>
+    <%= f.input :role, collection: %w[regular manager master] %>
     <% end %>
     <%= f.input :skill %>
     <%= f.input :licenses %>

@@ -58,7 +58,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
                                                        :situation,
                                                        :message,
                                                        :role,
-                                                       :job]
+                                                       :job,
+                                                       :factory,
+                                                       :contractor]
     )
   end
 

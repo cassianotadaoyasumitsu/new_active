@@ -1,14 +1,26 @@
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <%= link_to "Todos", users_path, class: "nav-link" %>
-  </li>
-  <li class="nav-item">
-    <%= link_to "Ativos", active_users_path, class: "nav-link" %>
-  </li>
-  <li class="nav-item">
-    <%= link_to "Inativos", inactive_users_path, class: "nav-link" %>
-  </li>
-</ul>
+<% if current_user.admin || current_user.role == "manager" || current_user.role == "master" %>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <%= link_to "Todos", users_path, class: "nav-link" %>
+    </li>
+    <% if current_user.role == "manager" %>
+      <li class="nav-item">
+        <%= link_to "Ativos", manager_users_path, class: "nav-link" %>
+      </li>
+    <% elsif current_user.role == "master" %>
+      <li class="nav-item">
+        <%= link_to "Ativos", master_users_path, class: "nav-link" %>
+      </li>
+    <% else %>
+      <li class="nav-item">
+        <%= link_to "Ativos", users_path, class: "nav-link" %>
+      </li>
+    <% end %>
+    <li class="nav-item">
+      <%= link_to "Inativos", inactive_users_path, class: "nav-link" %>
+    </li>
+  </ul>
+<% end %>
 <div class="text-end">
   <% if user_signed_in? %>
     <%= current_user.email %>
@@ -47,3 +59,5 @@
   <% end %>
   </tbody>
 </table>
+
+<%= @users.count %>
