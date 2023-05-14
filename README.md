@@ -38,10 +38,8 @@ git push staging main
 
 ### Heroku Production
 ```
-git push production main
-
-# to add app to production
-    heroku git:remote --remote production --app my-production-app
-# to list apps on production
-    heroku apps --remote production
+heroku create <app-name> --region eu --remote production
+git push heroku main
+heroku run rails db:migrate --app <app-name>
+heroku run rails db:seed --app <app-name>
 ```
