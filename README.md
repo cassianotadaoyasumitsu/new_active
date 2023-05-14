@@ -25,3 +25,7 @@ Step 3: heroku run rake db:migrate
 Step 4: heroku run rake db:seed (if you have seed)
 Step 5: heroku restart if needed
 ```
+
+### Heroku Staging
+```
+git push staging main
