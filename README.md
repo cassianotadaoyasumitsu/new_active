@@ -29,3 +29,19 @@ Step 5: heroku restart if needed
 ### Heroku Staging
 ```
 git push staging main
+
+# to add app to staging
+    heroku git:remote --remote staging --app my-staging-app
+# to list apps on staging
+    heroku apps --remote staging
+``` 
+
+### Heroku Production
+```
+git push production main
+
+# to add app to production
+    heroku git:remote --remote production --app my-production-app
+# to list apps on production
+    heroku apps --remote production
+```
