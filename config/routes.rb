@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'users/registrations' }
   root to: "pages#home"
 
-  resources :users, only: [:index, :new, :show, :edit, :update]
+  resources :users, only: [:index, :new, :create, :show, :edit, :update]
   resources :jobs, only: [:index, :new, :create, :destroy]
   resources :factories
 

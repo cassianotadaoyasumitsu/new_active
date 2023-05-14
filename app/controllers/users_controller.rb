@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
   def index
     if current_user.admin?
       @users = User.all.order(created_at: :desc)
@@ -11,6 +12,16 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+  end
+
+  def create
+    @user = User.new(user_params)
+
+    if @user.save
+      redirect_to user_path(@user), notice: "Internal Account created successfully!"
+    else
+      render :new
+    end
   end
 
   def manager_index
