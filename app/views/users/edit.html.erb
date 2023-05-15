@@ -8,7 +8,6 @@
   <div class="form-inputs">
     <%= f.input :job, required: true %>
     <% if current_user.role == "manager" || current_user.role == "master" || current_user.admin %>
-      <%= f.input :contractor, placeholder: "Only fill if User is manager", required: true %>
       <%= f.input :manager, collection: User.where(role: %w[master manager]).pluck(:first_name), required: true %>
       <%= f.input :factory, collection: Factory.all.pluck(:name), required: true %>
       <%= f.input :status, collection: %w[active inactive], required: true %>
@@ -28,6 +27,7 @@
     <%= f.input :licenses %>
     <%= f.input :situation %>
     <%= f.input :message %>
+    <%= f.input :contractor, as: :hidden, required: true, input_html: { value: User.find_by(role: "master")&.first_name } %>
   </div>
     <%= f.button :submit, "Atualizar", class: "btn btn-success" %>
 <% end %>
