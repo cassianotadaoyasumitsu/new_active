@@ -25,7 +25,7 @@
 <br>
 
 <div class="d-flex justify-content-between">
-  <h2>Perfil</h2>
+  <h2>Perfil - <%= @user.first_name %> <%= @user.last_name %></h2>
   <p><%= link_to "Editar", edit_user_path(@user), class: "btn btn-secondary" %></p>
 </div>
 
@@ -33,6 +33,11 @@
 
 <p><strong>ID: </strong><%= @user.id %></p>
 <p><strong>Vaga: </strong><%= @user.job %></p>
+<p><strong>Factory: </strong><%= @user.factory %></p>
+<p><strong>Contractor: </strong><%= @user.contractor %></p>
+<p><strong>Manager: </strong><%= @user.manager %></p>
+<p><strong>Status: </strong><%= @user.status %></p>
+<p><strong>Role: </strong><%= @user.role %></p>
 <p><strong>Nome: </strong><%= @user.first_name %> <%= @user.last_name %></p>
 <p><strong>Email: </strong><%= @user.email %></p>
 <p><strong>Telefone: </strong><%= @user.phone %></p>
@@ -43,8 +48,6 @@
 <p><strong>Postal Code: </strong><%= @user.postal_code %></p>
 <p><strong>Endereço: </strong><%= @user.address %></p>
 <p><%= @user.address2 %></p>
-<p><strong>Status: </strong><%= @user.status %></p>
-<p><strong>Role: </strong><%= @user.role %></p>
 <p><strong>Skills: </strong><%= @user.skill %></p>
 <p><strong>Carteiras: </strong><%= @user.licenses %></p>
 <p><strong>Situação Atual: </strong><%= @user.situation %></p>

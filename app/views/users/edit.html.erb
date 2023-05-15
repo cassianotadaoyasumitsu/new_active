@@ -10,9 +10,9 @@
     <% if current_user.role == "manager" || current_user.role == "master" || current_user.admin %>
       <%= f.input :contractor, placeholder: "Only fill if User is manager", required: true %>
       <%= f.input :manager, collection: User.where(role: %w[master manager]).pluck(:first_name), required: true %>
-      <%= f.input :factory, collection: Factory.all, required: true %>
-      <%= f.input :status, collection: %w[active inactive] %>
-      <%= f.input :role, collection: %w[regular manager] %>
+      <%= f.input :factory, collection: Factory.all.pluck(:name), required: true %>
+      <%= f.input :status, collection: %w[active inactive], required: true %>
+      <%= f.input :role, collection: %w[regular manager], required: true %>
     <% end %>
     <%= f.input :first_name, required: true %>
     <%= f.input :last_name, required: true %>
@@ -29,33 +29,5 @@
     <%= f.input :situation %>
     <%= f.input :message %>
   </div>
-
-  <% if current_user.role == "manager" || current_user.admin %>
-  <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Atualizar
-  </button>
-
-
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Confirmar atualização.</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p>Você tem certeza que deseja atualizar o usuário?</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-          <%= f.button :submit, "Atualizar", class: "btn btn-success" %>
-        </div>
-      </div>
-    </div>
-  </div>
-  <% else %>
     <%= f.button :submit, "Atualizar", class: "btn btn-success" %>
-  <% end %>
 <% end %>
