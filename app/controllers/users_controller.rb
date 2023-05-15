@@ -25,7 +25,12 @@ class UsersController < ApplicationController
   end
 
   def manager_index
-    @users = User.where(manager: current_user.first_name).or(User.where(factory: current_user.factory)).where.not(id: current_user.id).where.not(status: "inactive").order(created_at: :desc)
+    @users = User.where(manager: current_user.first_name)
+                 .or(User.where(factory: current_user.factory))
+                 .where.not(id: current_user.id)
+                 .where.not(status: "inactive")
+                 .where.not(manager: "Active")
+                 .order(created_at: :desc)
   end
 
   def master_index
