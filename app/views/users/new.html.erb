@@ -7,7 +7,7 @@
   <div class="form-inputs">
     <%= f.input :job, required: true %>
     <%= f.input :manager, collection: User.where(role: %w[master manager]).pluck(:first_name), required: true %>
-    <%= f.input :factory, collection: Factory.all, required: true %>
+    <%= f.input :factory, collection: Factory.all.pluck(:name), required: true %>
     <%= f.input :status, collection: %w[active inactive] %>
     <%= f.input :role, collection: %w[regular manager] %>
     <%= f.input :first_name, required: true %>
