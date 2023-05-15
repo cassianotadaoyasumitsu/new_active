@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   end
 
   def master_index
-    @users = User.where(contractor: current_user.first_name).where.not(id: current_user.id).order(created_at: :desc)
+    @users = User.where(contractor: current_user.first_name).where.not(id: current_user.id).where.not(status: "inactive").order(created_at: :desc)
   end
 
   def inactive_index
